@@ -9,5 +9,4 @@ public class MinitestTuan3M4Application {
     public static void main(String[] args) {
         SpringApplication.run(MinitestTuan3M4Application.class, args);
     }
-
 }
