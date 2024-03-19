@@ -41,22 +41,19 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
                                 .requestMatchers("/login","css/**").permitAll()
-                                .requestMatchers("/home").authenticated()
-                                .requestMatchers("/create", "/delete", "/update").hasAuthority("ROLE_ADMIN"))
+                                .requestMatchers("/home").authenticated())
 
                 .formLogin((formLogin) ->
                         formLogin
-                                .usernameParameter("username")
-                                .passwordParameter("password")
+
                                 .loginPage("/login")
                                 .failureUrl("/login?error=true")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/home"))
-                .logout((logout) ->
-                        logout.deleteCookies("remove")
-                                .invalidateHttpSession(false)
-                                .logoutUrl("/logout")
-                                .logoutSuccessUrl("/login"));
+                                .defaultSuccessUrl("/home"));
+//                .logout((logout) ->
+//                        logout.deleteCookies("remove")
+//                                .invalidateHttpSession(false)
+//                                .logoutUrl("/logout")
+//                                .logoutSuccessUrl("/login"));
         return http.build();
     }
 
